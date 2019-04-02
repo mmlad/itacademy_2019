@@ -7,7 +7,7 @@ namespace OpenCartTests.Core
         [TestInitialize]
         public void TestSetup()
         {
-            Driver.StartBrowserChrome();
+            Driver.StartBrowser();
         }
 
         [TestCleanup]

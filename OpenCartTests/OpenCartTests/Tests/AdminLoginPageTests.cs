@@ -1,8 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Threading;
 using OpenCartTests.Core;
+using OpenCartTests.Pages;
+using OpenCartTests.Data;
 
 namespace OpenCartTests.Tests
 {
@@ -37,6 +38,16 @@ namespace OpenCartTests.Tests
             var loggedUserName = driver.FindElement(By.XPath("//a[contains(text(),'demo demo ')]"));
 
             Assert.AreEqual("demo demo", loggedUserName.Text);
+        }
+
+        [TestCategory("MladenTests")]
+        [TestMethod]
+        public void Test02VerifyDefaultUsernameValue()
+        {
+            var loginPage = new LoginPage();
+            loginPage.Navigate();
+
+            Assert.AreEqual(TestData.UsernameDefaultValue, loginPage.GetUsernameInputValue());
         }
     }
 }

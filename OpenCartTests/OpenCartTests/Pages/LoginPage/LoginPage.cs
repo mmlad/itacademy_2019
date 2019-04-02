@@ -1,11 +1,9 @@
 ﻿using OpenCartTests.Core;
 using OpenCartTests.Data.Models;
-using OpenQA.Selenium;
-using System;
 
 namespace OpenCartTests.Pages
 {
-    public class LoginPage
+    public class LoginPage : BasePage<LoginPageElementMap>
     {
         private string pageURL = "https://demo.opencart.com/admin/";
 
@@ -16,29 +14,35 @@ namespace OpenCartTests.Pages
 
         internal void TypeUsername(string username)
         {
-            var usernameElement = Driver.Browser.FindElement(By.Id("input-username"));
+            var usernameElement = Map.UsernameElement;
             usernameElement.Clear();
             usernameElement.SendKeys(username);
         }
 
         internal void TypePassword(string password)
         {
-            var passwordElement = Driver.Browser.FindElement(By.Id("input-password"));
+            var passwordElement = Map.PasswordElement;
             passwordElement.Clear();
             passwordElement.SendKeys(password);
         }
 
         internal void ClickLoginButton()
         {
-            var loginButton = Driver.Browser.FindElement(By.CssSelector("button.btn"));
-            loginButton.Click();
+            Map.LoginButton.Click();
         }
 
-        public void Login(User user)
+        public DashboardPage Login(User user)
         {
             TypeUsername(user.Username);
             TypePassword(user.Password);
             ClickLoginButton();
+
+            return new DashboardPage();
+        }
+
+        public string GetUsernameInputValue()
+        {
+            return Map.UsernameElement.GetAttribute("value");
         }
     }
 }

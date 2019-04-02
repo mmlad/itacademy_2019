@@ -24,7 +24,9 @@ namespace OpenCartTests.Core
                 browser = value;
             }
         }
-        public static void StartBrowserChrome()
+
+        public static void StartBrowser()
+
         {
             Browser = new ChromeDriver();
             Browser.Manage().Window.Maximize();
