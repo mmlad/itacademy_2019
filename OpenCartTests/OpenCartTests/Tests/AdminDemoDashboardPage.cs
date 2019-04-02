@@ -8,7 +8,7 @@ namespace OpenCartTests.Tests
     [TestClass]
     public class AdminDemoDashboardPage :BaseTest
     {
-        [TestCategory("AdminDemoDashboardPage")]
+        [TestCategory("MladenTests")]
         [TestMethod]
         public void Test01NavigateToAdminPanelDashboardPage()
         {
@@ -26,7 +26,7 @@ namespace OpenCartTests.Tests
             Assert.AreEqual(TestData.UserFullName, dashboardPage.GetLoggedUserFullName());
         }
 
-        [TestCategory("AdminDemoDashboardPage")]
+        [TestCategory("MladenTests")]
         [TestMethod]
         public void Test02AlternativeNavigateToAdminPanelDashboardPage()
         {
@@ -35,9 +35,7 @@ namespace OpenCartTests.Tests
 
             var user = TestData.User;
 
-            loginPage.Login(user);
-
-            var dashboardPage = new DashboardPage();
+            var dashboardPage = loginPage.Login(user);
 
             Assert.AreEqual(TestData.UserFullName, dashboardPage.GetLoggedUserFullName());
         }

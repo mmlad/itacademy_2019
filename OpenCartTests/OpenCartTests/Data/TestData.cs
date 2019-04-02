@@ -19,5 +19,13 @@ namespace OpenCartTests.Data
                 return "demo demo";
             }
         }
+
+        public static string UsernameDefaultValue
+        {
+            get
+            {
+                return "demo";
+            }
+        }
     }
 }

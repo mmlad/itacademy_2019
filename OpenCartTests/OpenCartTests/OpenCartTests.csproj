@@ -57,12 +57,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\BasePage.cs" />
+    <Compile Include="Core\BasePageElementMap.cs" />
     <Compile Include="Core\BaseTest.cs" />
     <Compile Include="Core\Driver.cs" />
     <Compile Include="Data\Models\User.cs" />
     <Compile Include="Data\TestData.cs" />
-    <Compile Include="Pages\DashboardPage.cs" />
-    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\DashboardPage\DashboardPage.cs" />
+    <Compile Include="Pages\LoginPage\LoginPage.cs" />
+    <Compile Include="Pages\LoginPage\LoginPageElementMap.cs" />
     <Compile Include="Tests\AdminDemoDashboardPage.cs" />
     <Compile Include="Tests\AdminLoginPageTests.cs" />
     <Compile Include="Tests\HomePageTests.cs" />
