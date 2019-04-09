@@ -2,6 +2,7 @@
 using OpenCartTests.Core;
 using OpenCartTests.Data;
 using OpenCartTests.Pages;
+using OpenCartTests.Utils;
 
 namespace OpenCartTests.Tests
 {
@@ -15,6 +16,8 @@ namespace OpenCartTests.Tests
             var loginPage = new LoginPage();
             loginPage.Navigate();
 
+            loginPage.Validate().LoginForm();
+
             var user = TestData.User;
 
             loginPage.TypeUsername(user.Username);
@@ -23,7 +26,8 @@ namespace OpenCartTests.Tests
 
             var dashboardPage = new DashboardPage();
 
-            Assert.AreEqual(TestData.UserFullName, dashboardPage.GetLoggedUserFullName());
+            //Assert.AreEqual(TestData.UserFullName, dashboardPage.GetLoggedUserFullName());
+            dashboardPage.Validate().SuccessfulLogin();
         }
 
         [TestCategory("MladenTests")]
@@ -32,12 +36,31 @@ namespace OpenCartTests.Tests
         {
             var loginPage = new LoginPage();
             loginPage.Navigate();
+            loginPage.Validate().LoginForm();
 
             var user = TestData.User;
 
             var dashboardPage = loginPage.Login(user);
 
-            Assert.AreEqual(TestData.UserFullName, dashboardPage.GetLoggedUserFullName());
+            dashboardPage.Validate().SuccessfulLogin();
+        }
+
+        [TestCategory("MladenTests")]
+        [TestMethod]
+        public void Test003LoginAndLogout()
+        {
+            var loginPage = new LoginPage();
+            loginPage.Navigate();
+            loginPage.Validate().LoginForm();
+
+            var user = TestData.User;
+
+            var dashboardPage = loginPage.Login(user);
+
+            dashboardPage.Validate().SuccessfulLogin();
+
+            loginPage = dashboardPage.Header.Logout();
+            loginPage.Validate().LoginForm();
         }
     }
 }

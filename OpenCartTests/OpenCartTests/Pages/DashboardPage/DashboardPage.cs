@@ -1,13 +1,16 @@
 ﻿using OpenCartTests.Core;
-using OpenQA.Selenium;
 
 namespace OpenCartTests.Pages
 {
-    public class DashboardPage
+    public class DashboardPage : BasePage<DashboardPageElementMap, DashboardPageValidator>
     {
+        public DashboardPage() : base(new Header())
+        {
+        }
+
         public string GetLoggedUserFullName()
         {
-            var loggedUserName = Driver.Browser.FindElement(By.XPath("//a[contains(text(),'demo demo ')]"));
+            var loggedUserName = Map.LoggedUserName;
             return loggedUserName.Text;
         }
     }
