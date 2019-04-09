@@ -57,23 +57,40 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\BaseComponent.cs" />
     <Compile Include="Core\BasePage.cs" />
     <Compile Include="Core\BasePageElementMap.cs" />
+    <Compile Include="Core\BasePageValidator.cs" />
     <Compile Include="Core\BaseTest.cs" />
     <Compile Include="Core\Driver.cs" />
     <Compile Include="Data\Models\User.cs" />
     <Compile Include="Data\TestData.cs" />
     <Compile Include="Pages\DashboardPage\DashboardPage.cs" />
+    <Compile Include="Pages\DashboardPage\DashboardPageElementMap.cs" />
+    <Compile Include="Pages\DashboardPage\DashboardPageValidator.cs" />
     <Compile Include="Pages\LoginPage\LoginPage.cs" />
     <Compile Include="Pages\LoginPage\LoginPageElementMap.cs" />
+    <Compile Include="Pages\LoginPage\LoginPageValidator.cs" />
+    <Compile Include="Pages\PageComponents\Header\Header.cs" />
+    <Compile Include="Pages\PageComponents\Header\HeaderElementMap.cs" />
+    <Compile Include="Pages\PageComponents\Header\HeaderValidator.cs" />
     <Compile Include="Tests\AdminDemoDashboardPage.cs" />
     <Compile Include="Tests\AdminLoginPageTests.cs" />
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\StoreDemoHomePage.cs" />
+    <Compile Include="Utils\StringHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\Images\wallpaper.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Catalog\CategoriesListPage\" />
+    <Folder Include="Pages\Catalog\ProductsListPage\" />
+    <Folder Include="Pages\PageComponents\NaviationPanel\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -1,4 +1,5 @@
 ﻿using OpenCartTests.Data.Models;
+using OpenCartTests.Utils;
 
 namespace OpenCartTests.Data
 {
@@ -27,5 +28,11 @@ namespace OpenCartTests.Data
                 return "demo";
             }
         }
+
+        public static string RandomString(int length)
+        {
+            return StringHelper.GenerateRandomString(length);
+        }
+
     }
 }

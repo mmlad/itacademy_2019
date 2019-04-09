@@ -3,10 +3,10 @@ using OpenCartTests.Data.Models;
 
 namespace OpenCartTests.Pages
 {
-    public class LoginPage : BasePage<LoginPageElementMap>
+    public class LoginPage : BasePage<LoginPageElementMap, LoginPageValidator>
     {
         private string pageURL = "https://demo.opencart.com/admin/";
-
+    
         internal void Navigate()
         {
             Driver.Browser.Navigate().GoToUrl(pageURL);
@@ -28,7 +28,9 @@ namespace OpenCartTests.Pages
 
         internal void ClickLoginButton()
         {
-            Map.LoginButton.Click();
+            var element = Map.LoginButton;
+            // ScrollToElement(element);
+            element.Click();
         }
 
         public DashboardPage Login(User user)
