@@ -13,20 +13,8 @@ namespace OpenCartTests.Tests
         [TestMethod]
         public void Test01NavigateToAdminPanelDashboardPage()
         {
-            var loginPage = new LoginPage();
-            loginPage.Navigate();
+            var dashboardPage = LoginProvider();
 
-            loginPage.Validate().LoginForm();
-
-            var user = TestData.User;
-
-            loginPage.TypeUsername(user.Username);
-            loginPage.TypePassword(user.Password);
-            loginPage.ClickLoginButton();
-
-            var dashboardPage = new DashboardPage();
-
-            //Assert.AreEqual(TestData.UserFullName, dashboardPage.GetLoggedUserFullName());
             dashboardPage.Validate().SuccessfulLogin();
         }
 
@@ -34,13 +22,7 @@ namespace OpenCartTests.Tests
         [TestMethod]
         public void Test02AlternativeNavigateToAdminPanelDashboardPage()
         {
-            var loginPage = new LoginPage();
-            loginPage.Navigate();
-            loginPage.Validate().LoginForm();
-
-            var user = TestData.User;
-
-            var dashboardPage = loginPage.Login(user);
+            var dashboardPage = LoginProvider();
 
             dashboardPage.Validate().SuccessfulLogin();
         }
@@ -49,18 +31,23 @@ namespace OpenCartTests.Tests
         [TestMethod]
         public void Test003LoginAndLogout()
         {
+            var dashboardPage = LoginProvider();
+            dashboardPage.Validate().SuccessfulLogin();
+
+            var loginPage = dashboardPage.Header.Logout();
+
+            loginPage.Validate().LoginForm();
+        }
+
+        public DashboardPage LoginProvider()
+        {
+            var user = TestData.User;
+
             var loginPage = new LoginPage();
             loginPage.Navigate();
             loginPage.Validate().LoginForm();
 
-            var user = TestData.User;
-
-            var dashboardPage = loginPage.Login(user);
-
-            dashboardPage.Validate().SuccessfulLogin();
-
-            loginPage = dashboardPage.Header.Logout();
-            loginPage.Validate().LoginForm();
+            return loginPage.Login(user);
         }
     }
 }
